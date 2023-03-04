@@ -1,0 +1,12 @@
+
+Usando o flask crie 3 rotas:
+
+1) Que consuma uma API e adapte o conteúdo para uma pagina web (crie tb uma pagina web que realize este consumo usando ajax/fetch)
+
+2) Que consuma duas APIs, combinando e adaptando o conteúdo para um json (crie tb uma pagina web que realize este consumo usando ajax/fetch)
+
+3) Crie uma rota que retorne um template (JINJA) que consuma os dados de uma API (pode ser uma dar anteriores).
+
+ 
+
+Realize a verificação de erros nos retornos da API.

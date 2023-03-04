@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Playfair Display", serif;
+}
+
+body .form-wrapper {
+  width: 400px;
+  margin: 100px auto;
+}
+body .form-wrapper h1 {
+  font-weight: 500;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 55px;
+}
+body .form-wrapper form {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+body .form-wrapper form #categories {
+  width: 300px;
+  background-color: #A5A5A5;
+  height: 30px;
+  margin-right: 15px;
+  text-align: center;
+  outline: none;
+  font-weight: bold;
+  border: none;
+}
+body .form-wrapper form #categories:hover {
+  cursor: pointer;
+}
+body .form-wrapper form button {
+  border-radius: 60%;
+  border: none;
+  background-color: #630606;
+  height: 40px;
+  width: 40px;
+}
+body .form-wrapper form button:hover {
+  cursor: pointer;
+}
+body .form-wrapper form button i {
+  font-size: 15px;
+  color: #FFF;
+}
+
+.meals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: auto;
+  max-width: 1200px;
+}
+.meals .meal {
+  background-color: #282828;
+  width: 520px;
+  height: 294px;
+  padding: 30px 20px;
+  margin-bottom: 35px;
+  display: flex;
+  color: #FFF;
+  position: relative;
+  box-shadow: 4px 4px 16px 3px rgb(116, 116, 116);
+}
+.meals .meal::after {
+  content: "";
+  width: 223px;
+  height: 354px;
+  background-color: #A5A5A5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.meals .meal img {
+  width: 240px;
+  height: 100%;
+  margin-right: 25px;
+  z-index: 9;
+}
+.meals .meal .card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+.meals .meal .card-right .card-right-text {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.meals .meal .card-right .card-right-text h2 {
+  font-size: 28px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.meals .meal .card-right .card-right-text hr {
+  margin-top: 20px;
+  width: 75%;
+}
+.meals .meal .card-right .card-right-text p {
+  justify-self: end;
+}
+.meals .meal .card-right .card-right-text p:last-child {
+  margin-top: 12px;
+}
+.meals .meal .card-right button {
+  background-color: #630606;
+  color: #FFF;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 34px;
+  align-self: end;
+}
+.meals .meal .card-right button:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
