@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Receitas</title>
+</head>
+<body> 
+    <div class="template-engine">
+        <h2>Receitas de Frutos do mar</h2>
+        <p>Feito com Jinja template engine</p>
+    </div>
+    <div class="meals">
+    {% for meal in meals %}
+        <div class="meal">
+            <img src="{{meal.foto}}" alt="">
+            <div class='card-right'>
+                <div class='card-right-text'>
+                    <div class='card-right-text-title'>
+                        <h2>{{meal.titulo}}</h2>
+                        <hr>
+                    </div>    
+                    <div class='card-right-text-content'>
+                        <p>Categoria: {{meal.categoria}}</p>
+                        <p>Dificuldade: Mediana</p>
+                    </div>
+                </div>
+                <a href="https://www.themealdb.com/" target="_blank" class="button-wrapper"><button class='read-more' id='read-more'>Saiba mais</button></a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

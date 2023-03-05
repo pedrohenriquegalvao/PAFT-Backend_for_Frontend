@@ -134,3 +134,24 @@ body {
         }
     }
 }
+
+.template-engine {
+    width: fit-content;
+    margin: 90px auto;
+    h2,p {
+        text-align: center;
+    }
+    h2 {
+        font-size: 36px;
+        text-align: center;
+    }
+    p {
+        font-size: 14px;
+        letter-spacing: 0.26em;
+    }
+
+}
+
+.button-wrapper {
+    align-self: flex-end;
+}

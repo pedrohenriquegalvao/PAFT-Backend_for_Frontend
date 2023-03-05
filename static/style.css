@@ -119,4 +119,25 @@ body .form-wrapper form button i {
 }
 .meals .meal .card-right button:hover {
   cursor: pointer;
+}
+
+.template-engine {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 90px auto;
+}
+.template-engine h2, .template-engine p {
+  text-align: center;
+}
+.template-engine h2 {
+  font-size: 36px;
+  text-align: center;
+}
+.template-engine p {
+  font-size: 14px;
+  letter-spacing: 0.26em;
+}
+
+.button-wrapper {
+  align-self: flex-end;
 }/*# sourceMappingURL=style.css.map */

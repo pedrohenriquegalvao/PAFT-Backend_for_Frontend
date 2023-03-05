@@ -32,11 +32,9 @@ form.addEventListener("submit",((e) => {
                 fetch(`${localURL}/meals?${queryString}`)
                 .then(response => response.json())
                 .then(data => {
-                    let mealLink = ''
                     if (data) {
                         console.log(data)
                         data.forEach(meal => {
-                            mealLink = fetchMealLink(meal['idMeal']);
                             document.querySelector('.meals').innerHTML += 
                             `<div class="meal">
                                 <img src="${meal['foto']}" alt="">
@@ -51,7 +49,7 @@ form.addEventListener("submit",((e) => {
                                             <p>Dificuldade: Mediana</p>
                                         </div>
                                     </div>
-                                    <button class='read-more' id='read-more' onclick='goToMeal(${mealLink})'>Saiba mais</button>
+                                    <button class='read-more' id='read-more' onclick='navigate()'>Saiba mais</button>
                                 </div>
                             </div>`;
                         });
@@ -69,19 +67,6 @@ form.addEventListener("submit",((e) => {
 
 }))
 
-function goToMeal(mealLink) { 
-    if(mealLink !== undefined)
-        window.open(mealLink, '_blank');
-}
-
-function fetchMealLink(idMeal) { // TODO: tornar essa func assincrona, ela esta sendo chamada porém retorna undefined
-    let link = ''
-    fetch(`${localURL}/meal/${idMeal}`)
-    .then(response => response.json())
-    .then(data => {
-        if (data) 
-            link = data['strSource']
-        
-    })
-    return link
+function navigate() { 
+    window.open('https://www.themealdb.com/', '_blank');
 }

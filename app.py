@@ -1,13 +1,14 @@
 '''
-TheNewsAPI
-Site: https://www.thenewsapi.com/documentation 
-API Key: b7iyvQTBOaOJaAjPAW1L9aBjVo4l4Up6kQvgcwhE
-Exemplo de request: “https://api.thenewsapi.com/v1/news/top?api_token=b7iyvQTBOaOJaAjPAW1L9aBjVo4l4Up6kQvgcwhE&locale=br&language=pt&limit=3”
+
+APIs utilizadas
+
+TheMealDB
+Site: https://www.themealdb.com/api.php
+API Key: Não precisa
 
 RestCountries
 Site: https://restcountries.com/
-API Key: Não precisa
-Exemplo de request: “https://restcountries.com/v3.1/name/peru”
+API Key: N/A
 
 '''
 
@@ -21,26 +22,7 @@ COUNTRIES = { 'American' : "us", 'Canadian' : "ca", 'British' : 'gb', 'Chinese' 
 'Greek' : 'gr', 'Indian' : 'in', 'Irish' : 'ie', 'Italian' : 'it',  'Jamaican' : 'jm', 'Japanese' : 'jp', 'Kenyan' : 'ke', 'Malaysian' : 'my', 'Mexican' : 'mx', 'Maroccan' : 'ma', 'Polish' : 'pl', 'Portuguese' : 'pt', 'Russian' : 'ru', 'Spanish' : 'es', 'Thai' : 'th', 'Tunisian' : 'tn', 'Turkish' : 'tr', 'Unknown' : '', 'Vietnamese' : 'vn' }
 
 app = Flask(__name__)
-# @app.route('/noticia')
-# def noticia():
-#     country = request.args.get('country')
-#     respNews = requests.get('https://api.thenewsapi.com/v1/news/top?api_token=b7iyvQTBOaOJaAjPAW1L9aBjVo4l4Up6kQvgcwhE&limit=10')
-#     jsonNews = respNews.json()
-#     noticias = []
-#     for noticia in jsonNews['data']:
-#         noticiaData = {
-#         'titulo': translator.translate(noticia['title'], dest='pt').text,
-#         'descricao': translator.translate(noticia['description'], dest='pt').text,
-#         'foto': noticia['image_url'],
-#         'link': noticia['url'],
-#         'data': noticia['published_at'],
-#         'fonte': noticia['source'],
-#         'pais': noticia['locale']
-#         }
-#         noticias.append(noticiaData)
-#     return noticias 
     
-
 @app.route('/receitas-exer1')
 def receitas():
     return render_template('receitas-exer1.html')
@@ -119,6 +101,29 @@ def meal(idMeal):
     }
     data = {'mealData' : mealData, 'countryData' : countryData}
     return data
+
+# Exercício 3
+@app.route('/meals-template-engine')
+def mealsTemplateEngine():
+    category = {
+        'realName' : 'Seafood',
+        'translatedName': 'Frutos do mar'
+    }
+    respMeals = requests.get(f'https://www.themealdb.com/api/json/v1/1/filter.php?c={category["realName"]}')
+    jsonMeals = respMeals.json()['meals']
+    limit = len(jsonMeals) if len(jsonMeals) <= 10 else 10 
+# Se houver menos de 10 receitas, o limite é essa quantidade. Caso tenha mais de 10 receitas, o limite é cravado em 10.
+    meals = []
+    for c in range(0,limit):
+        meal = jsonMeals[c]
+        mealData = {
+            'titulo': translator.translate(meal['strMeal'], dest='pt').text,
+            'categoria': category['translatedName'],
+            'foto': meal['strMealThumb'],
+            'idMeal': meal['idMeal']
+        }
+        meals.append(mealData)
+    return render_template('meals-template-engine.html', meals=meals) 
 
 
 app.run(debug=True, port=5002)

@@ -3,17 +3,12 @@ const idMeal = pathname[pathname.length - 1];
 const localURL = 'http://127.0.0.1:5002';
 
 window.onload = () => {
-    console.log('oi' + idMeal);
-    console.log('\r\n\r\n')
-    console.log('salve')
     fetch(`${localURL}/meal/${idMeal}`)
     .then(response => response.json())
     .then(data => {
         if (data) {
             countryData = data['countryData']
             mealData = data['mealData']
-            console.log(`Country data: ${Object.keys(countryData)}`)
-            console.log(`Meal data: ${Object.keys(mealData)}`)
             let ingredients = []
             let measures = []
             for(let key of Object.keys(mealData)) {
