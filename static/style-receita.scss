@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+$main-font: 'Playfair Display', serif;
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: $main-font;
+}
+
+
+body {
+    background-color: #282828;
+    
+    .header {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1180px;
+        margin: 90px auto 75px auto;
+        img {
+            max-width: 550px;
+        }
+        .info {
+            width: 550px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .meal-info {
+                h1, h3, p, li {
+                    color: #FFF;
+                }
+                h1 {
+                    text-transform: capitalize;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 36px;
+                    line-height: 48px;
+                    letter-spacing: 0.22em;  
+                    transform: translateY(-13px);
+                }
+                hr {
+                    border: 1px solid #BDCDD6;
+                    margin: 20px 0;
+                }
+                .meal-info-text {
+                    margin-bottom: 58px;
+                }
+            }
+
+            .country-info {
+                color: #FFF;
+                display: flex;
+                flex-direction: column;
+                h3 {
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 24px;
+                    margin-bottom: 19px;
+                }
+                ul {
+                    transform: translateX(15px);
+                    li {
+                        line-height: 24px;
+                    }
+                }
+                img {
+                    width: 220px;
+                    align-self: flex-end;
+                }
+            }
+        }
+    }
+
+
+    .main {
+        display: flex;
+        max-width: 1180px;
+        margin: 0 auto 75px auto;
+        //background-color: red;
+        justify-content: space-around;
+        color: #FFF;
+        h2 {
+            text-align: center;
+            font-weight: 400;
+            font-size: 30px;
+            line-height: 40px;
+            margin-bottom: 35px;
+        }
+        .ingredients {
+            //background-color: yellow;
+            h2 {
+                text-align: left;
+            }
+            width: 50%;
+            ul {
+                transform: translateX(15px);
+                list-style: square;
+                li {
+                    line-height: 30px;
+                }
+            }
+        }
+        .instructions {
+            //background-color: blue;
+            width: 50%;
+            p {
+                text-align: justify;
+            }
+        }
+    }
+}

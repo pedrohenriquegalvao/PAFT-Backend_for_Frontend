@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Playfair Display", serif;
+}
+
+body {
+  background-color: #282828;
+}
+body .header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1180px;
+  margin: 90px auto 75px auto;
+}
+body .header img {
+  max-width: 550px;
+}
+body .header .info {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+body .header .info .meal-info h1, body .header .info .meal-info h3, body .header .info .meal-info p, body .header .info .meal-info li {
+  color: #FFF;
+}
+body .header .info .meal-info h1 {
+  text-transform: capitalize;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 48px;
+  letter-spacing: 0.22em;
+  transform: translateY(-13px);
+}
+body .header .info .meal-info hr {
+  border: 1px solid #BDCDD6;
+  margin: 20px 0;
+}
+body .header .info .meal-info .meal-info-text {
+  margin-bottom: 58px;
+}
+body .header .info .country-info {
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+}
+body .header .info .country-info h3 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 19px;
+}
+body .header .info .country-info ul {
+  transform: translateX(15px);
+}
+body .header .info .country-info ul li {
+  line-height: 24px;
+}
+body .header .info .country-info img {
+  width: 220px;
+  align-self: flex-end;
+}
+body .main {
+  display: flex;
+  max-width: 1180px;
+  margin: 0 auto 75px auto;
+  justify-content: space-around;
+  color: #FFF;
+}
+body .main h2 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 40px;
+  margin-bottom: 35px;
+}
+body .main .ingredients {
+  width: 50%;
+}
+body .main .ingredients h2 {
+  text-align: left;
+}
+body .main .ingredients ul {
+  transform: translateX(15px);
+  list-style: square;
+}
+body .main .ingredients ul li {
+  line-height: 30px;
+}
+body .main .instructions {
+  width: 50%;
+}
+body .main .instructions p {
+  text-align: justify;
+}/*# sourceMappingURL=style-receita.css.map */

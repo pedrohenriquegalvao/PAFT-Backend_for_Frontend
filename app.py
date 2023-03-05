@@ -17,6 +17,9 @@ from googletrans import Translator
 
 translator = Translator()
 
+COUNTRIES = { 'American' : "us", 'Canadian' : "ca", 'British' : 'gb', 'Chinese' : 'cn', 'Croatian' : 'hr', 'Dutch' : 'nl', 'Egyptian' : 'eg', 'French' : 'fr',
+'Greek' : 'gr', 'Indian' : 'in', 'Irish' : 'ie', 'Italian' : 'it',  'Jamaican' : 'jm', 'Japanese' : 'jp', 'Kenyan' : 'ke', 'Malaysian' : 'my', 'Mexican' : 'mx', 'Maroccan' : 'ma', 'Polish' : 'pl', 'Portuguese' : 'pt', 'Russian' : 'ru', 'Spanish' : 'es', 'Thai' : 'th', 'Tunisian' : 'tn', 'Turkish' : 'tr', 'Unknown' : '', 'Vietnamese' : 'vn' }
+
 app = Flask(__name__)
 # @app.route('/noticia')
 # def noticia():
@@ -42,9 +45,13 @@ app = Flask(__name__)
 def receitas():
     return render_template('receitas-exer1.html')
 
+@app.route('/receitas-exer2')
+def receitasExer2():
+    return render_template('receitas-exer2.html')
+
 @app.route('/receita/<int:idMeal>')
 def receita(idMeal):
-    return render_template('receita.html')
+    return render_template('receita-exer2.html')
 
 @app.route('/categories')
 def categories():
@@ -87,10 +94,32 @@ def meal(idMeal):
     jsonMeal = respMeal.json()['meals'][0]
     mealData = {}
     for key, value in jsonMeal.items():
-        if (value != None and value != ''): # Verifica e adiciona nos dados da receita apenas as chaves cujos valores não são vazios.
-            # mealData.update({f'{key}':value})
-            mealData.update({f'{key}':translator.translate(value, dest='pt').text}) # TODO: verificar 175g virando 175 EGP no meal id=52959
-    return mealData
+        # Verifica e adiciona nos dados da receita apenas as chaves cujos valores não são vazios.
+        if (value != None and str(value).strip() != ''): 
+            
+            if 'strMeasure' in str(key) and ('ml' in str(value) or 'g' in str(value) ):
+                mealData.update({f'{key}':value}) # Não traduz o valor
+            else:
+                mealData.update({f'{key}':str(translator.translate(value, dest='pt', src='en').text).capitalize()}) # Traduz o valor
+
+    countryCode = COUNTRIES[jsonMeal['strArea']]
+    respCountry = requests.get(f"https://restcountries.com/v3.1/alpha/{countryCode}")
+    jsonCountry = respCountry.json()[0]
+    moeda = {}
+    for key,value in jsonCountry['currencies'].items():
+        moeda.update( {'nome' : translator.translate(value['name'], dest='pt', src='en').text.capitalize()} )
+        moeda.update( {'simbolo' : value['symbol']} )
+    countryData = {
+        'nomeComum' : jsonCountry['translations']['por']['common'],
+        'nomeOficial' : jsonCountry['translations']['por']['official'],
+        'regiao' : translator.translate(jsonCountry['region'], dest='pt', src='en').text.capitalize(),
+        'capital' : jsonCountry['capital'][0],
+        'moeda' : moeda,
+        'bandeira' : jsonCountry['flags']['png']
+    }
+    data = {'mealData' : mealData, 'countryData' : countryData}
+    return data
+
 
 app.run(debug=True, port=5002)
 
